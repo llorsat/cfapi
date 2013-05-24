@@ -1,0 +1,22 @@
+<script type="text/x-handlebars-template" id="home-template">
+  <div class="container">
+    <div class="row">
+      <div class="span3">  ...  </div>
+      <div class="span9">
+        <h2>{{ metadata.project }}</h2>
+        <h3>{{ metadata.description }}</h3>
+
+        {{# each metadata.resources }}
+          <ul>
+            {{ resource }}
+            {{# each operations }}
+              <li>{{ method }} {{ path }} - {{ description }}</li>
+            {{/ each }}
+          </ul>
+        {{/ each }}
+      </div>
+    </div>
+  </div>
+
+  <div id="vitrine-footer"></div>
+</script>

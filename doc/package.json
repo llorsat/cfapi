@@ -1,0 +1,80 @@
+{
+  "name": "packageName",
+  "version": "1.0.0",
+  "author": "llorsat",
+  "contributors": [
+    "Julian Ceballos <@jceb>",
+    "Vicente Mendoza <@chentepixtol>",
+    "Josue Camara <@josuecamara>",
+    "Juan Purata <@johnfx>",
+    "Guillermo Alvarado",
+    "Eric"
+  ],
+  "mantainers": [
+    "Julian Ceballos <@jceb>",
+    "Vicente Mendoza <@chentepixtol>",
+    "Josue Camara <@josuecamara>",
+    "Juan Purata <@johnfx>",
+    "Eric"
+  ],
+  "dependencies": {
+    "grunt": "",
+    "ncp": "",
+    "mime": ""
+  },
+  "settings": {
+    "i18n": {
+      "languages": [
+        "es",
+        "en"
+      ],
+      "files": [
+        "js",
+        "html"
+      ],
+      "blacklist": [
+        ".git",
+        "images",
+        "icons",
+        "nodejs",
+        "stylesheets",
+        "libraries",
+        "languages"
+      ]
+    },
+    "environment": {
+      "core": [
+        "app",
+        "run",
+        "contrib/modernizr"
+      ],
+      "libraries": [
+        "jquery",
+        "jquery.easing",
+        "jquery.ui",
+        "spin",
+        "bootstrap",
+        "handlebars",
+        "underscore",
+        "backbone",
+        "globalize",
+        "jquery.vitrine",
+        "jquery.vitrine.helpers",
+        "backbone.extensions",
+        "handlebars.helpers",
+        "console",
+        "helpers"
+      ],
+      "main_files": [
+        "listeners",
+        "router",
+        "alerts",
+        "main"
+      ],
+      "applications": [
+        "auth",
+        "documentation"
+      ]
+    }
+  }
+}

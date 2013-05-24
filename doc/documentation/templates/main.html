@@ -1,0 +1,56 @@
+<!-- Your main template here -->
+<script type="text/x-handlerbars-template" id="documentation-template">
+<div id="documentaion" class="container">
+
+  <div class="row">
+    <div class="span12">
+      <h2>{{ metadata.project }}</h2>
+      <h3>{{ metadata.description }}</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span2"> &nbsp;
+      <ul class="nav nav-list affix bs-docs-sidenav">
+        <li class=""><a href="#">Lista de modulos</a></li>
+        {{# each modules }}
+        <li class=""><a href="#{{ name }}"><i class="icon-chevron-right"></i> {{ name }}</a></li>
+        {{/ each }}
+      </ul>
+    </div>
+    <div class="span10">
+      {{# each modules }}
+        <h3><a name="{{ name }}" href="#{{ name }}" title="">{{ name }}</a></h3>
+        {{# each resources }}
+          <section id="{{ resource }}-{{ ../this }}" class="well">
+            <h4>{{ resource }}</h4>
+            <p>{{ description }}</p>
+            <ul class="unstyled">
+              {{# each operations }}
+                <li>
+                  <code>{{ method }} {{ path }}</code>
+                  <small>{{ description }}</small>
+                  <div class="pull-right">
+                    {{# each tags }}
+                      <span class="label label-info">{{ this }}</span> 
+                    {{/ each }}
+                  </div>
+                  <div class="clearfix"></div>
+                  {{# if args }}
+                  <div class="bs-docs-arguments">
+                    {{# each args }}
+                    <p><strong>{{ name }}:</strong> &lt;<i>{{ type }}</i>&gt; {{ value }} <br> <i>{{ description }}</i></p>
+                    {{/ each }}
+                  </div>
+                  {{/ if }}
+                </li>
+              {{/ each }}
+            </ul>    
+          </section>
+        {{/ each }}
+      {{/ each }}
+
+    </div>
+  </div>
+</div>
+</script>

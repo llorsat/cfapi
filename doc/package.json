@@ -1,80 +1,59 @@
 {
-  "name": "packageName",
-  "version": "1.0.0",
-  "author": "llorsat",
-  "contributors": [
-    "Julian Ceballos <@jceb>",
-    "Vicente Mendoza <@chentepixtol>",
-    "Josue Camara <@josuecamara>",
-    "Juan Purata <@johnfx>",
-    "Guillermo Alvarado",
-    "Eric"
-  ],
-  "mantainers": [
-    "Julian Ceballos <@jceb>",
-    "Vicente Mendoza <@chentepixtol>",
-    "Josue Camara <@josuecamara>",
-    "Juan Purata <@johnfx>",
-    "Eric"
-  ],
-  "dependencies": {
-    "grunt": "",
-    "ncp": "",
-    "mime": ""
-  },
   "settings": {
+    "storage_engine": "localStorage",
+    "api": "",
     "i18n": {
       "languages": [
-        "es",
         "en"
       ],
       "files": [
         "js",
-        "html"
+        "html",
+        "hbs"
       ],
       "blacklist": [
         ".git",
         "images",
         "icons",
-        "nodejs",
         "stylesheets",
-        "libraries",
+        "libraries"
+      ]
+    },
+    "deploy": {
+      "folders": [
+        "icons",
+        "fonts",
+        "images",
         "languages"
       ]
     },
     "environment": {
       "core": [
         "app",
-        "run",
         "contrib/modernizr"
       ],
       "libraries": [
         "jquery",
-        "jquery.easing",
-        "jquery.ui",
-        "spin",
         "bootstrap",
-        "handlebars",
         "underscore",
         "backbone",
+        "handlebars",
         "globalize",
-        "jquery.vitrine",
-        "jquery.vitrine.helpers",
-        "backbone.extensions",
-        "handlebars.helpers",
-        "console",
         "helpers"
       ],
       "main_files": [
         "listeners",
-        "router",
-        "alerts",
         "main"
       ],
       "applications": [
-        "auth",
-        "documentation"
+        "root"
       ]
     }
-  }
+  },
+  "name": "documentation",
+  "description": "Write a little bit about this project",
+  "version": "0.0.1",
+  "author": "",
+  "homepage": "",
+  "_id": "documentation@0.0.1"
 }

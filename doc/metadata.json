@@ -4,75 +4,54 @@
   "description": "gateway between next_ws and nexth5",
   "resources": [
     {
-      "resource": "users",
-      "description": "user resource description",
+      "resource": "sessions",
+      "description": "authentication resource description",
       "tags": [
-        "Usuarios",
-        "Nexth5"
+        "Sesion",
+        " Acceso",
+        " Nexth5"
       ],
-      "module": "Finanzas",
+      "module": "Auth",
       "operations": [
-        {
-          "path": "/{id}",
-          "method": "GET",
-          "description": "get a user",
-          "tags": [
-            "nx_usuarios.datos_grales_usu",
-            "users"
-          ]
-        },
-        {
-          "path": "/",
-          "method": "GET",
-          "description": "get a list of users",
-          "tags": [
-            "nx_usuarios.bsqUsuario",
-            "users"
-          ]
-        },
         {
           "path": "/",
           "method": "POST",
-          "description": "create a user",
+          "description": "get user session",
           "tags": [
-            "nx_usuarios.agregarUsu",
-            "users"
+            "nx_utilerias.doLogin",
+            " nx_utilerias.getMenuPrincipa",
+            " etc"
           ],
           "args": [
             {
-              "name": "from",
+              "name": "company_id",
               "type": "string",
-              "value": "[usuarios|articulos]",
-              "description": ""
-            },
-            {
-              "name": "actives",
-              "type": "boolean",
               "value": "",
               "description": ""
-            }
-          ]
-        },
-        {
-          "path": "/{id}",
-          "method": "PUT",
-          "description": "update a user",
-          "tags": [
-            "nx_usuarios.actualizar_usu",
-            "users"
-          ],
-          "args": [
-            {
-              "name": "from",
-              "type": "string",
-              "value": "[usuarios|articulos]",
-              "description": "descripcion con varias lineas"
             },
             {
-              "name": "actives",
-              "type": "boolean",
-              "value": "[true|false]",
-              "description": "solo activos"
+              "name": "ds",
+              "type": "string",
+              "value": "",
+              "description": ""
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "value": "",
+              "description": ""
+            },
+            {
+              "name": "password",
+              "type": "string",
+              "value": "",
+              "description": ""
+            },
+            {
+              "name": "username",
+              "type": "string",
+              "value": "",
+              "description": ""
             }
           ]
         }

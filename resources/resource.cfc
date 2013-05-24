@@ -20,7 +20,7 @@ global variables:
     <cfset uriComponents = uri.split('/')>
 
     <cfset ws = 'next_ws'>
-    <cfset route = 'nextapi'>
+    <cfset route = 'cfapi'>
     <cfset password = ''>
     
     <cfif arrayLen(uriComponents) GT 2>

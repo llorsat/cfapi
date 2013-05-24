@@ -54,6 +54,48 @@
               "description": ""
             }
           ]
+        },
+        {
+          "path": "/",
+          "method": "GET",
+          "description": "get user session",
+          "tags": [
+            "nx_utilerias.doLogin",
+            " nx_utilerias.getMenuPrincipa",
+            " etc"
+          ],
+          "args": [
+            {
+              "name": "company_id",
+              "type": "string",
+              "value": "",
+              "description": ""
+            },
+            {
+              "name": "ds",
+              "type": "string",
+              "value": "",
+              "description": ""
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "value": "",
+              "description": ""
+            },
+            {
+              "name": "password",
+              "type": "string",
+              "value": "",
+              "description": ""
+            },
+            {
+              "name": "username",
+              "type": "string",
+              "value": "",
+              "description": ""
+            }
+          ]
         }
       ]
     }

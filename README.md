@@ -27,11 +27,11 @@ Heredar resource te será de mucha ayuda ya que proporciona variables de utilida
 
 Posteriormente, dentro del componente solo basta con que escribas las funciones correspondientes a los verbos http que quieras que este recurso responda:
 
-GET :id - get
-GET - get_all
-POST - create
-PUT :id - update
-DELETE :id - delete
+* GET :id - get
+* GET - get_all
+* POST - create
+* PUT :id - update
+* DELETE :id - delete
 
 Para que tu recurso responda a los 4 verbos, tu código debería quedar de la siguiente forma:
 

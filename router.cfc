@@ -10,22 +10,14 @@
     <cffunction name="init" access="remote" returntype="any" returnformat="json" output="false">
         <cfset uriComponents = uri.split('/')>
         <cfset data = FORM>
-        <cfif arrayLen(uriComponents) GT 3>
-            <cfset uriData.ds = uriComponents[2]>
-            <cfset uriData.company_id = uriComponents[3]>
-            <cfset uriData.username = uriComponents[4]>
-            <cfset uriData.token = uriComponents[5]>
-            <cfset uriData.resource = uriComponents[6]>
-            <cfset response = resource(uriData, data)>
+        <cfif arrayLen(uriComponents) lt 2>
+            <cfset response = StructNew()>
+            <cfset response.message = 'Bienvenido a tu api en coldfusion'>
             <cfreturn response>
-        <cfelse>
-            <cfif verb EQ "POST">
-                <cfinvoke component="#resources#.sessions" method="signin" data="#data#" returnVariable="response">
-                <cfreturn response>
-            <cfelse>
-                <cfreturn "Access Denied">
-            </cfif>
         </cfif>
+        <cfset uriData.resource = uriComponents[2]>
+        <cfset response = resource(uriData, data)>
+        <cfreturn response>
     </cffunction>
   
     <cffunction name="resource" output="false">
@@ -37,8 +29,7 @@
         <cftry>
             <cfswitch expression="#verb#">
                 <cfcase value="GET">
-                    <cfif arrayLen(uriComponents) GT 6>
-                        <cfset params.identifier = uriComponents[7]>
+                    <cfif arrayLen(uriComponents) GT 2>
                         <cfinvoke component="#resources#.#params.resource#" method="get" returnvariable="response">
                     <cfelse>
                         <cfinvoke component="#resources#.#params.resource#" method="get_all" returnvariable="response">

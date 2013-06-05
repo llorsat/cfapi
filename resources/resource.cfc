@@ -5,10 +5,6 @@ global variables:
 
 * ws
 * route
-* datasource
-* company
-* username
-* token
 * resource
 * id
 * REQ - data into request
@@ -21,56 +17,29 @@ global variables:
 
     <cfset ws = 'next_ws'>
     <cfset route = 'cfapi'>
-    <cfset password = ''>
     
     <cfif arrayLen(uriComponents) GT 2>
-        <cfset datasource = uriComponents[2]>
-        <cfset company = uriComponents[3]>
-        <cfset username = uriComponents[4]>
-        <cfset token = uriComponents[5]>
-        <cfset resource = uriComponents[6]>
-        <cfif arrayLen(uriComponents) GTE 7>
-            <cfset id = uriComponents[7]>
+        <cfset resource = uriComponents[2]>
+        <cfif arrayLen(uriComponents) GTE 3>
+            <cfset id = uriComponents[3]>
         </cfif>
     </cfif>
-
-    <!--- TODO: Borrar cuando ninguna aplicacion utilice attr variables --->
-    <cfset attr = StructNew()>
-    <cfset attr.next_ws = "#ws#.">
-    <cfset attr.route = "#route#.">
-    <cfset attr.password = password>
-    <cfif arrayLen(uriComponents) GT 1>
-        <cfset attr.ds = datasource>
-        <cfset attr.company_id = company>
-        <cfset attr.username = username>
-        <cfset attr.token = token>
-        <cfset attr.resource = resource>
-        <cfif arrayLen(uriComponents) GTE 7>
-            <cfset attr.id = id>
-        </cfif>
-    </cfif>
-    <!--- / --->
 
     <cfif verb EQ "GET" or verb EQ "DELETE">
         <cfset REQ = URL>
     </cfif>
+
     <cfif verb EQ "POST">
         <cfif isDefined("MODEL")>
             <cfset REQ = deserializeJSON(MODEL)>
         <cfelse>
-            <cfset MODEL = FORM>
-            <cfset REQ = MODEL>
+            <cfset REQ = FORM>
         </cfif>
     </cfif>
-    <cfif verb EQ "PUT">
-        <cfset MODEL = deserializeJSON(removeChars(urlDecode(getHTTPRequestData().content), 1, 6))>
-        <cfset REQ = MODEL>
-    </cfif>
 
-    <cfset REQ.user = username>
-    <cfset REQ.passw = password>
-    <cfset REQ.dns = datasource>
-    <cfset REQ.emp_id = company>
+    <cfif verb EQ "PUT">
+        <cfset REQ = deserializeJSON(removeChars(urlDecode(getHTTPRequestData().content), 1, 6))>
+    </cfif>
 
     <cffunction name="mapArray" output="false">
         <cfargument name="oldarray" type="array" required="true">
@@ -187,6 +156,5 @@ global variables:
           return createDateTime(year, month, day, hour, minute, second);
         }
     </cfscript>
-    
 
 </cfcomponent>

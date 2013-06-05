@@ -11,11 +11,9 @@ http://localhost:8000/cfapi/index.cfm/clients
 
 Por último, tienes que considerar que cada componente debe heredar del fichero resource.cfc:
 
-{{{
-#!coldfusion
 <cfcomponent extends="resource">
 </cfcomponent>
-}}}
+
 
 Heredar resource te será de mucha ayuda ya que proporciona variables de utilidad:
 
@@ -35,9 +33,6 @@ DELETE :id - delete
 
 Para que tu recurso responda a los 4 verbos, tu código debería quedar de la siguiente forma:
 
-
-{{{
-#!coldfusion
 <cfcomponent extends="resource">
 
   <cffunction name="get">
@@ -56,7 +51,6 @@ Para que tu recurso responda a los 4 verbos, tu código debería quedar de la si
   </cffunction>
 
 </cfcomponent>
-}}}
 
 Cada metodo puede acceder directamente al objeto REQ, que tiene todos los parametros que han sido pasados al recurso.
 

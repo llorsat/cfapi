@@ -14,10 +14,11 @@ global variables:
     <cfset verb = cgi.request_method>
     <cfset uri = cgi.PATH_INFO>
     <cfset uriComponents = uri.split('/')>
+    <cfset REQ  = structNew()>
 
     <cfset ws = 'next_ws'>
     <cfset route = 'cfapi'>
-    
+
     <cfif arrayLen(uriComponents) GT 2>
         <cfset resource = uriComponents[2]>
         <cfif arrayLen(uriComponents) GTE 3>
@@ -25,20 +26,27 @@ global variables:
         </cfif>
     </cfif>
 
-    <cfif verb EQ "GET" or verb EQ "DELETE">
-        <cfset REQ = URL>
+   <!--- Append in REQ --->
+    <cfif !StructIsEmpty(URL)>
+        <cfset structAppend(REQ, URL)>
+    </cfif>
+    <cfif !StructIsEmpty(FORM)>
+        <!--- Always is in the POST REQUESTS --->
+        <cfif isDefined("REQ.fieldnames")>
+            <cfset StructDelete(REQ, 'fieldnames'   , true)>
+        </cfif>
+        <cfset structAppend(REQ, FORM)>
     </cfif>
 
     <cfif verb EQ "POST">
+        <!--- Only for BACKBONE --->
         <cfif isDefined("MODEL")>
-            <cfset REQ = deserializeJSON(MODEL)>
-        <cfelse>
-            <cfset REQ = FORM>
+            <cfset structAppend(REQ, deserializeJSON(MODEL))>
         </cfif>
     </cfif>
 
     <cfif verb EQ "PUT">
-        <cfset REQ = deserializeJSON(removeChars(urlDecode(getHTTPRequestData().content), 1, 6))>
+        <cfset structAppend(REQ, deserializeJSON(removeChars(urlDecode(getHTTPRequestData().content), 1, 6) ))>
     </cfif>
 
     <cffunction name="mapArray" output="false">
@@ -122,7 +130,7 @@ global variables:
     <cffunction name="cleanValue">
         <cfargument name="value">
         <cfif isStruct(value)>
-            <cfreturn this.cleanStruct(value)>  
+            <cfreturn this.cleanStruct(value)>
         <cfelseif isArray(value) >
             <cfreturn this.cleanArray(value)>
         <cfelseif isBinary(value) or isBoolean(value) or isObject(value) or isQuery(value) or isXmlDoc(value)>
